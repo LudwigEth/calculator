@@ -23,6 +23,10 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.flex {
+    flex: 1;
+}
 /* calculator main */
 
 .calculator {
