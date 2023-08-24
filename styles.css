@@ -24,6 +24,10 @@ body {
     align-items: center;
 }
 
+.max-width {
+    width: 100%;
+}
+
 .flex {
     flex: 1;
 }
