@@ -19,6 +19,10 @@ body {
     flex-direction: column;
 }
 
+.centering {
+    justify-content: center;
+    align-items: center;
+}
 /* calculator main */
 
 .calculator {
