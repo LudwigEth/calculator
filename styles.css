@@ -9,3 +9,7 @@
 .flex-container {
     display: flex;
 }
+
+.flex-column {
+    flex-direction: column;
+}
