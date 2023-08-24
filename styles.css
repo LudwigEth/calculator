@@ -18,3 +18,11 @@ body {
 .flex-column {
     flex-direction: column;
 }
+
+/* calculator main */
+
+.calculator {
+    height: 500px;
+    width: 300px;
+    border: 1px solid black;
+}
