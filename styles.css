@@ -1,3 +1,12 @@
+:root {
+    --screen-color: #ffcccc;
+    --top-button-color: #ffdddd;
+    --button-color: #ffeeee;
+    --right-button-color: #cccccc;
+    --border-button-color: #ddaaaa;
+    --body-color: #8ccc88;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,20 +15,20 @@
 
 body {
     height: 100vh;
-    background-color: #8ccd88;
+    background-color: var(--body-color);
 }
 
 button {
     flex: 1;
     font-size: 2rem;
     border: 1px solid;
-    border-color: #ddaaaa;
-    background-color: #ffeeee;
+    border-color: var(--border-button-color);
+    background-color: var(--button-color);
 }
 
 .button-top {
     border-top-width: 2px;
-    background-color: #ffdddd;
+    background-color: var(--top-button-color);
 }
 
 .button-bottom {
@@ -31,7 +40,7 @@ button {
 
 .button-right {
     border-right: none;
-    background-color: #cccccc;
+    background-color: var(--right-button-color);
 }
 
 /* utility functions */
@@ -55,7 +64,7 @@ button {
 }
 
 .tile {
-    background-color: #ffcccc;
+    background-color: var(--screen-color);
     width: 100%;
     height: 100%;
 }
