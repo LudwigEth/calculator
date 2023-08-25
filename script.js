@@ -39,7 +39,7 @@ buttons.forEach(button => {
     })
 });
 
-const replaceZero = () => {
+const replaceInitialZero = () => {
     if (bottomScreen.innerHTML === "0") {
         bottomScreen.innerHTML = "";
     };
