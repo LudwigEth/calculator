@@ -4,10 +4,6 @@ let numA;
 let numB;
 let operator;
 
-button.addEventListener("click", function() {
-
-})
-
 
 const add = (a, b) => a + b;
 
@@ -32,5 +28,5 @@ const operate = (numA, numB, operator) => {
         case "+":
             divide(numA, numB);
             break;
-    }
-}
+    };
+};
