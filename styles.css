@@ -1,10 +1,10 @@
 :root {
+    --body-color: #8ccc88;
     --screen-color: #ffcccc;
-    --top-button-color: #ffdddd;
     --button-color: #ffeeee;
+    --top-button-color: #ffdddd;
     --right-button-color: #cccccc;
     --border-button-color: #ddaaaa;
-    --body-color: #8ccc88;
 }
 
 * {
