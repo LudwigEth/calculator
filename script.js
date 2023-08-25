@@ -34,9 +34,38 @@ const operate = (numA, numB, operator) => {
 
 buttons.forEach(button => {
     button.addEventListener("click", function() {
-        replaceZero();
-        bottomScreen.innerHTML += button.innerHTML;
-    })
+        switch (button.innerHTML) {
+            case "c":
+                bottomScreen.innerHTML = "0";
+                break;
+            case "del":
+                if (bottomScreen.innerHTML !== "0" && bottomScreen.innerHTML) {
+                    bottomScreen.innerHTML = bottomScreen.innerHTML.slice(0, -1);
+                };
+                if (!bottomScreen.innerHTML) {
+                    bottomScreen.innerHTML = "0";
+                };
+                if (bottomScreen.innerHTML === "-") bottomScreen.innerHTML = "0";
+                break;
+            case "±":
+                if (bottomScreen.innerHTML === "0") return;
+                if (!bottomScreen.innerHTML.startsWith("-")) {
+                    replaceInitialZero();
+                    bottomScreen.innerHTML = "-" + bottomScreen.innerHTML;
+                } else {
+                    replaceInitialZero();
+                    bottomScreen.innerHTML = bottomScreen.innerHTML.slice(1);
+                };
+                if (!bottomScreen.innerHTML) {
+                    bottomScreen.innerHTML = "0";
+                };
+                break;
+            default:
+                replaceInitialZero();
+                bottomScreen.innerHTML += button.innerHTML;
+                break;
+        }
+    });
 });
 
 const replaceInitialZero = () => {
