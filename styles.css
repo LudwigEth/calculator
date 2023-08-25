@@ -13,6 +13,7 @@ body {
 
 .flex-container {
     display: flex;
+    width: 100%;
 }
 
 .flex-column {
@@ -24,16 +25,13 @@ body {
     align-items: center;
 }
 
-.max-width {
-    width: 100%;
-}
-
 .flex {
     flex: 1;
 }
 
 .tile {
     background-color: #ffcccc;
+    width: 100%;
 }
 /* calculator main */
 
