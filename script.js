@@ -1,3 +1,4 @@
+const buttons = document.querySelectorAll("button");
 const topScreen = document.getElementById("top-screen");
 const bottomScreen = document.getElementById("bottom-screen");
 let numA;
@@ -28,5 +29,18 @@ const operate = (numA, numB, operator) => {
         case "+":
             divide(numA, numB);
             break;
+    };
+};
+
+buttons.forEach(button => {
+    button.addEventListener("click", function() {
+        replaceZero();
+        bottomScreen.innerHTML += button.innerHTML;
+    })
+});
+
+const replaceZero = () => {
+    if (bottomScreen.innerHTML === "0") {
+        bottomScreen.innerHTML = "";
     };
 };
