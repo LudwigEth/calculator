@@ -11,6 +11,20 @@ body {
 
 button {
     flex: 1;
+    font-size: 2rem;
+    border: 1px solid black;
+}
+
+.button-left {
+    border-left: none;
+}
+
+.button-right {
+    border-right: none;
+}
+
+.button-bottom {
+    border-bottom: none;
 }
 
 /* utility functions */
@@ -43,7 +57,9 @@ button {
 .calculator {
     height: 500px;
     width: 300px;
-    border: 1px solid black;
+    border: 4px solid black;
+    border-radius: 16px;
+    overflow: hidden;
 }
 
 .screen {
