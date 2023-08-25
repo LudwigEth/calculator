@@ -1,0 +1,1 @@
+const topScreen = document.getElementById("top-screen");
