@@ -8,3 +8,5 @@ button.addEventListener("click", function() {
 
 
 const addition = (a, b) => a + b;
+
+const substraction = (a, b) => a - b;
