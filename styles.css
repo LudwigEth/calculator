@@ -12,11 +12,14 @@ body {
 button {
     flex: 1;
     font-size: 2rem;
-    border: 1px solid black;
+    border: 1px solid;
+    border-color: #ddaaaa;
+    background-color: #ffeeee;
 }
 
 .button-top {
-    border-top: 2px solid black;
+    border-top-width: 2px;
+    background-color: #ffdddd;
 }
 
 .button-bottom {
@@ -28,9 +31,8 @@ button {
 
 .button-right {
     border-right: none;
+    background-color: #cccccc;
 }
-
-
 
 /* utility functions */
 
