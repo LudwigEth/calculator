@@ -7,6 +7,6 @@ button.addEventListener("click", function() {
 })
 
 
-const addition = (a, b) => a + b;
+const add = (a, b) => a + b;
 
-const substraction = (a, b) => a - b;
+const substract = (a, b) => a - b;
