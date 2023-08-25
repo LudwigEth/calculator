@@ -49,3 +49,15 @@ button {
 .screen {
     height: 100px;
 }
+
+#top-screen {
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 2.4rem;
+}
+
+#bottom-screen {
+    justify-content: flex-end;
+    align-items: end;
+    font-size: 3rem;
+}
