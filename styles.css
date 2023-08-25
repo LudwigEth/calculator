@@ -31,10 +31,18 @@ body {
 .flex {
     flex: 1;
 }
+
+.tile {
+    background-color: #ffcccc;
+}
 /* calculator main */
 
 .calculator {
     height: 500px;
     width: 300px;
     border: 1px solid black;
+}
+
+.screen {
+    height: 100px;
 }
