@@ -15,6 +15,13 @@ button {
     border: 1px solid black;
 }
 
+.button-top {
+    border-top: 2px solid black;
+}
+
+.button-bottom {
+    border-bottom: none;
+}
 .button-left {
     border-left: none;
 }
@@ -23,9 +30,7 @@ button {
     border-right: none;
 }
 
-.button-bottom {
-    border-bottom: none;
-}
+
 
 /* utility functions */
 
@@ -64,7 +69,6 @@ button {
 
 .screen {
     height: 100px;
-    border-bottom: 1px solid black;
 }
 
 #top-screen {
