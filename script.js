@@ -44,6 +44,9 @@ const replaceInitialZero = () => {
     };
 };
 
+const defaultDisplay = () => bottomScreen.innerHTML = "0";
+
+
 
 // switch (button.innerHTML) {
 //     case "c":
