@@ -34,7 +34,7 @@ const operate = (numA, numB, operator) => {
 
 buttons.forEach(button => {
     button.addEventListener("click", function() {
-
+        const currentContent = bottomScreen.innerHTML;
     });
 });
 
