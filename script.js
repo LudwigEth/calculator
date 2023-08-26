@@ -98,9 +98,10 @@ const deleteLastEntry = () => {
 
 const toggleNegPos = () => {
     if (screenB.innerHTML === "0" || screenB.innerHTML === "-") return;
-    screenB.innerHTML.startsWith("-") ?
-        screenB.innerHTML = screenB.innerHTML.slice(1) :
-        screenB.innerHTML = "-" + screenB.innerHTML;
+    
+    screenB.innerHTML = screenB.innerHTML.startsWith("-")
+        ? screenB.innerHTML.slice(1)
+        : "-" + screenB.innerHTML;
 };
 
 const nonStackOperator = () => {
