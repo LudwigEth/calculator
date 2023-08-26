@@ -107,4 +107,9 @@ const nonStackOperator = () => {
         }
 };
 
+const decimalLogic = () => {
+    if (screenB.innerHTML.endsWith(".")) return;
+    screenB.innerHTML += button.innerHTML;
+};
+
 const updateScreenA = () => screenA.innerHTML = screenB.innerHTML;
