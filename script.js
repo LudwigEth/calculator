@@ -37,7 +37,7 @@ buttons.forEach(button => {
         const buttonText = button.innerHTML;
         switch (buttonText) {
             case "c":
-                resetScreens();
+                resetAll();
                 break;
             case "del":
                 deleteScreenAEntry();
@@ -89,10 +89,16 @@ const replaceInitialZero = () => {
 
 const resetScreenA = () => screenA.innerHTML = "";
 const resetScreenB = () => screenB.innerHTML = "0";
+const resetNumA = () => numA = "";
+const resetNumB = () => numB = "";
+const resetOperator = () => operator = "";
 
-const resetScreens = () => {
+const resetAll = () => {
     resetScreenA();
     resetScreenB();
+    resetNumA();
+    resetNumB();
+    resetOperator();
 };
 
 const deleteLastEntry = () => {
