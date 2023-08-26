@@ -60,6 +60,9 @@ buttons.forEach(button => {
                     bottomScreen.innerHTML = "0";
                 };
                 break;
+            case "÷":
+                divide(numA, numB);
+                break;
             default:
                 replaceInitialZero();
                 bottomScreen.innerHTML += button.innerHTML;
