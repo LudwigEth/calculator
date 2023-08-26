@@ -47,7 +47,7 @@ const replaceInitialZero = () => {
 const resetScreens = () => {
     bottomScreen.innerHTML = "0";
     topScreen.innerHTML = "";
-}
+};
 
 
 
