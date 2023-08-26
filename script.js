@@ -104,14 +104,10 @@ const toggleNegPos = () => {
 };
 
 const nonStackOperator = () => {
-    if (screenB.innerHTML.endsWith("+") ||
-        screenB.innerHTML.endsWith("-") ||
-        screenB.innerHTML.endsWith("×") ||
-        screenB.innerHTML.endsWith("÷")) {
-            return true;
-        } else {
-            return false;
-        }
+    return  screenB.innerHTML.endsWith("+") ||
+            screenB.innerHTML.endsWith("-") ||
+            screenB.innerHTML.endsWith("×") ||
+            screenB.innerHTML.endsWith("÷");
 };
 
 const decimalLogic = () => screenB.innerHTML.endsWith(".");
