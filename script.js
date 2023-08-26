@@ -26,7 +26,7 @@ const operate = (numA, numB, operator) => {
         case "×":
             multiply(numA, numB);
             break;
-        case "+":
+        case "÷":
             divide(numA, numB);
             break;
     };
