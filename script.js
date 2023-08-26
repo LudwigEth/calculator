@@ -54,7 +54,7 @@ const toggleNegPos = () => {
     currentContent.startsWith("-") ?
         currentContent.slice(1) :
         screenB.innerHTML = "-" + currentContent;
-}
+};
 
 
 
