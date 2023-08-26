@@ -44,10 +44,13 @@ const replaceInitialZero = () => {
     };
 };
 
-const defaultDisplay = () => {
+const resetScreens = () => {
     bottomScreen.innerHTML = "0";
     topScreen.innerHTML = "";
 }
+
+
+
 
 
 
