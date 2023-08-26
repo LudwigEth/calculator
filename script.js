@@ -40,6 +40,7 @@ buttons.forEach(button => {
                 resetScreens();
                 break;
             case "del":
+                deleteScreenAEntry();
                 deleteLastEntry();
                 break;
             case "±":
@@ -97,6 +98,13 @@ const deleteLastEntry = () => {
     if (screenB.innerHTML === "0") return;
     screenB.innerHTML = screenB.innerHTML.slice(0, -1);
     if (!screenB.innerHTML) screenB.innerHTML = "0";
+};
+
+const deleteScreenAEntry = () => {
+    if (screenB.innerHTML === "0") {
+        screenB.innerHTML = screenA.innerHTML;
+        resetScreenA();
+    };
 };
 
 const toggleNegPos = () => {
