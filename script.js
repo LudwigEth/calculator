@@ -34,7 +34,22 @@ const operate = (numA, numB, operator) => {
 
 buttons.forEach(button => {
     button.addEventListener("click", function() {
-        const currentContent = screenB.innerHTML;
+        const buttonText = button.innerHTML;
+        switch (buttonText) {
+            case "c":
+                resetScreens();
+                break;
+            case "del":
+                deleteLastEntry();
+                break;
+            case "±":
+                toggleNegPos();
+                break;
+            default:
+                replaceInitialZero();
+                screenB.innerHTML += buttonText;
+                break;
+        };
     });
 });
 
@@ -49,11 +64,17 @@ const resetScreens = () => {
     screenA.innerHTML = "";
 };
 
+const deleteLastEntry = () => {
+    if (screenB.innerHTML === "0") return;
+    screenB.innerHTML = screenB.innerHTML.slice(0, -1);
+    if (!screenB.innerHTML) screenB.innerHTML = "0";
+};
+
 const toggleNegPos = () => {
-    if (currentContent === "0" || currentContent === "-") return;
-    currentContent.startsWith("-") ?
-        currentContent.slice(1) :
-        screenB.innerHTML = "-" + currentContent;
+    if (screenB.innerHTML === "0" || screenB.innerHTML === "-") return;
+    screenB.innerHTML.startsWith("-") ?
+        screenB.innerHTML = screenB.innerHTML.slice(1) :
+        screenB.innerHTML = "-" + screenB.innerHTML;
 };
 
 
