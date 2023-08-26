@@ -1,39 +1,12 @@
 const buttons = document.querySelectorAll("button");
 const screenA = document.getElementById("top-screen");
 const screenB = document.getElementById("bottom-screen");
+
 let numA = "";
 let numB = "";
 let operator = "";
 let sum = "";
 
-
-const add = (a, b) => a + b;
-
-const substract = (a, b) => a - b;
-
-const multiply = (a, b) => a * b;
-
-const divide = (a, b) => a / b;
-
-
-const operate = (numA, numB, operator) => {
-    numA = parseFloat(numA);
-    numB = parseFloat(numB);
-    switch (operator) {
-        case "+":
-            return add(numA, numB);
-            break;
-        case "-":
-            return substract(numA, numB);
-            break;
-        case "×":
-            return multiply(numA, numB);
-            break;
-        case "÷":
-            return divide(numA, numB);
-            break;
-    };
-};
 
 buttons.forEach(button => {
     button.addEventListener("click", function() {
@@ -68,7 +41,7 @@ buttons.forEach(button => {
                 };
                 break;
             case ".":
-                if (decimalLogic()) {
+                if (decimalLogic() || containsDecimalpoint()) {
                     return;
                 } else {
                     screenB.innerHTML += buttonText;
@@ -97,11 +70,48 @@ buttons.forEach(button => {
     });
 });
 
-const replaceInitialZero = () => {
-    if (screenB.innerHTML === "0") {
-        screenB.innerHTML = "";
+
+const getNums = () => {
+    if (screenA.innerHTML === "") {
+        deleteUnusedOperator();
+    } else {
+        numA = screenA.innerHTML.slice(0, -1);
+        numB = screenB.innerHTML;
     };
 };
+
+const getOperator = () => {
+    if (screenA.innerHTML !== "0") operator = screenA.innerHTML.slice(-1);
+};
+
+const operateChecklist = () => {
+    return numA !== "" && numB !== "" && operator !== "";
+};
+
+const add = (a, b) => a + b;
+const substract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => a / b;
+
+const operate = (numA, numB, operator) => {
+    numA = parseFloat(numA);
+    numB = parseFloat(numB);
+    switch (operator) {
+        case "+":
+            return add(numA, numB);
+            break;
+        case "-":
+            return substract(numA, numB);
+            break;
+        case "×":
+            return multiply(numA, numB);
+            break;
+        case "÷":
+            return divide(numA, numB);
+            break;
+    };
+};
+
 
 const resetScreenA = () => screenA.innerHTML = "";
 const resetScreenB = () => screenB.innerHTML = "0";
@@ -115,6 +125,12 @@ const resetAll = () => {
     resetNumA();
     resetNumB();
     resetOperator();
+};
+
+const replaceInitialZero = () => {
+    if (screenB.innerHTML === "0") {
+        screenB.innerHTML = "";
+    };
 };
 
 const deleteLastEntry = () => {
@@ -146,28 +162,11 @@ const nonStackOperator = () => {
 };
 
 const decimalLogic = () => screenB.innerHTML.endsWith(".");
-
+const containsDecimalpoint = () => screenB.innerHTML.includes(".");
 const updateScreenA = () => screenA.innerHTML = screenB.innerHTML;
 
 const deleteUnusedOperator = () => {
     if (screenA.innerHTML === "") {
         if (nonStackOperator() || decimalLogic()) deleteLastEntry();
     };
-};
-
-const operateChecklist = () => {
-    return numA !== "" && numB !== "" && operator !== "";
-};
-
-const getNums = () => {
-    if (screenA.innerHTML === "") {
-        deleteUnusedOperator();
-    } else {
-        numA = screenA.innerHTML.slice(0, -1);
-        numB = screenB.innerHTML;
-    };
-};
-
-const getOperator = () => {
-    if (screenA.innerHTML !== "0") operator = screenA.innerHTML.slice(-1);
 };
