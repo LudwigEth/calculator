@@ -70,9 +70,12 @@ const replaceInitialZero = () => {
     };
 };
 
+const resetScreenA = () => screenA.innerHTML = "";
+const resetScreenB = () => screenB.innerHTML = "0";
+
 const resetScreens = () => {
-    screenB.innerHTML = "0";
-    screenA.innerHTML = "";
+    resetScreenA();
+    resetScreenB();
 };
 
 const deleteLastEntry = () => {
