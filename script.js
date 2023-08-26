@@ -63,6 +63,9 @@ buttons.forEach(button => {
                     screenB.innerHTML += buttonText;
                 };
                 break;
+            case "=":
+                deleteUnusedOperator();
+                break;
             default:
                 replaceInitialZero();
                 if (nonStackOperator()) {
@@ -114,3 +117,9 @@ const nonStackOperator = () => {
 const decimalLogic = () => screenB.innerHTML.endsWith(".");
 
 const updateScreenA = () => screenA.innerHTML = screenB.innerHTML;
+
+const deleteUnusedOperator = () => {
+    if (screenA.innerHTML === "") {
+        if (nonStackOperator() || decimalLogic()) deleteLastEntry();
+    };
+}
