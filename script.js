@@ -4,6 +4,7 @@ const screenB = document.getElementById("bottom-screen");
 let numA = "";
 let numB = "";
 let operator = "";
+let sum = "";
 
 
 const add = (a, b) => a + b;
@@ -16,6 +17,8 @@ const divide = (a, b) => a / b;
 
 
 const operate = (numA, numB, operator) => {
+    numA = parseFloat(numA);
+    numB = parseFloat(numB);
     switch (operator) {
         case "+":
             return add(numA, numB);
@@ -66,7 +69,13 @@ buttons.forEach(button => {
                 break;
             case "=":
                 deleteUnusedOperator();
-                if (operateChecklist()) operate(numA, numB, operator);
+                getNums();
+                getOperator();
+                if (operateChecklist()) {
+                    sum = operate(numA, numB, operator);
+                    resetAll();
+                    screenB.innerHTML = sum;
+                };
                 break;
             default:
                 replaceInitialZero();
@@ -141,4 +150,17 @@ const deleteUnusedOperator = () => {
 
 const operateChecklist = () => {
     return numA !== "" && numB !== "" && operator !== "";
+};
+
+const getNums = () => {
+    if (screenA.innerHTML === "") {
+        deleteUnusedOperator();
+    } else {
+        numA = screenA.innerHTML.slice(0, -1);
+        numB = screenB.innerHTML;
+    };
+};
+
+const getOperator = () => {
+    if (screenA.innerHTML !== "0") operator = screenA.innerHTML.slice(-1);
 };
