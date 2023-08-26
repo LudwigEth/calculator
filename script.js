@@ -49,6 +49,7 @@ buttons.forEach(button => {
             case "×":
             case "-":
             case "+":
+            case ".":
                 if (nonStackOperator()) {
                     return;
                 } else {
@@ -91,6 +92,7 @@ const nonStackOperator = () => {
     if (screenB.innerHTML.endsWith("+") ||
         screenB.innerHTML.endsWith("-") ||
         screenB.innerHTML.endsWith("×") ||
+        screenB.innerHTML.endsWith(".") ||
         screenB.innerHTML.endsWith("÷")) {
             return true;
         }
