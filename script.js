@@ -66,6 +66,7 @@ buttons.forEach(button => {
                 break;
             case "=":
                 deleteUnusedOperator();
+                if (operateChecklist()) operate(numA, numB, operator);
                 break;
             default:
                 replaceInitialZero();
@@ -130,4 +131,8 @@ const deleteUnusedOperator = () => {
     if (screenA.innerHTML === "") {
         if (nonStackOperator() || decimalLogic()) deleteLastEntry();
     };
+};
+
+const operateChecklist = () => {
+    return numA !== "" && numB !== "" && operator !== "";
 };
