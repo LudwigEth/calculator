@@ -122,4 +122,4 @@ const deleteUnusedOperator = () => {
     if (screenA.innerHTML === "") {
         if (nonStackOperator() || decimalLogic()) deleteLastEntry();
     };
-}
+};
