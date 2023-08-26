@@ -45,6 +45,16 @@ buttons.forEach(button => {
             case "±":
                 toggleNegPos();
                 break;
+            case "÷":
+            case "×":
+            case "-":
+            case "+":
+                if (nonStackOperator()) {
+                    return;
+                } else {
+                    screenB.innerHTML += buttonText;
+                };
+                break;
             default:
                 replaceInitialZero();
                 screenB.innerHTML += buttonText;
@@ -75,6 +85,15 @@ const toggleNegPos = () => {
     screenB.innerHTML.startsWith("-") ?
         screenB.innerHTML = screenB.innerHTML.slice(1) :
         screenB.innerHTML = "-" + screenB.innerHTML;
+};
+
+const nonStackOperator = () => {
+    if (screenB.innerHTML.endsWith("+") ||
+        screenB.innerHTML.endsWith("-") ||
+        screenB.innerHTML.endsWith("×") ||
+        screenB.innerHTML.endsWith("÷")) {
+            return true;
+        }
 };
 
 
