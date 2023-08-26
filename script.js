@@ -57,6 +57,13 @@ buttons.forEach(button => {
                     updateScreenA();
                     resetScreenB();
                 } else {
+                    getNums();
+                    getOperator();
+                    if (operateChecklist()) {
+                        sum = operate(numA, numB, operator);
+                        resetAll();
+                        screenB.innerHTML = sum;
+                    };
                     screenB.innerHTML += buttonText;
                 };
                 break;
