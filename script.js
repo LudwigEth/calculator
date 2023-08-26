@@ -49,6 +49,12 @@ const resetScreens = () => {
     screenA.innerHTML = "";
 };
 
+const toggleNegPos = () => {
+    if (currentContent === "0" || currentContent === "-") return;
+    currentContent.startsWith("-") ?
+        currentContent.slice(1) :
+        screenB.innerHTML = "-" + currentContent;
+}
 
 
 
