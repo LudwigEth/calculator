@@ -44,7 +44,10 @@ const replaceInitialZero = () => {
     };
 };
 
-const defaultDisplay = () => bottomScreen.innerHTML = "0";
+const defaultDisplay = () => {
+    bottomScreen.innerHTML = "0";
+    topScreen.innerHTML = "";
+}
 
 
 
