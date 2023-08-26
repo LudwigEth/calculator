@@ -56,6 +56,13 @@ buttons.forEach(button => {
                     screenB.innerHTML += buttonText;
                 };
                 break;
+            case ".":
+                if (decimalLogic()) {
+                    return;
+                } else {
+                    screenB.innerHTML += buttonText;
+                };
+                break;
             default:
                 replaceInitialZero();
                 if (nonStackOperator()) {
@@ -107,9 +114,6 @@ const nonStackOperator = () => {
         }
 };
 
-const decimalLogic = () => {
-    if (screenB.innerHTML.endsWith(".")) return;
-    screenB.innerHTML += button.innerHTML;
-};
+const decimalLogic = () => screenB.innerHTML.endsWith(".");
 
 const updateScreenA = () => screenA.innerHTML = screenB.innerHTML;
