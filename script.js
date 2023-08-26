@@ -18,16 +18,16 @@ const divide = (a, b) => a / b;
 const operate = (numA, numB, operator) => {
     switch (operator) {
         case "+":
-            add(numA, numB);
+            return add(numA, numB);
             break;
         case "-":
-            substract(numA, numB);
+            return substract(numA, numB);
             break;
         case "×":
-            multiply(numA, numB);
+            return multiply(numA, numB);
             break;
         case "÷":
-            divide(numA, numB);
+            return divide(numA, numB);
             break;
     };
 };
