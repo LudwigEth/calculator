@@ -8,6 +8,19 @@ let operator = "";
 let sum = "";
 
 
+window.addEventListener("keydown", function(event) {
+    const pressedKey = event.key;
+    const calculatorButton = document.getElementById("key-" + pressedKey);
+    const equalsKey = document.getElementById("key-=");
+    const divisionKey = document.getElementById("key-division");
+    if (calculatorButton) {
+        calculatorButton.click();
+    };
+    if (event.key === "/") divisionKey.click();
+    if (event.key === "Enter") equalsKey.click();
+});
+
+
 buttons.forEach(button => {
     button.addEventListener("click", function() {
         const buttonText = button.innerHTML;
