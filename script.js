@@ -26,7 +26,6 @@ window.addEventListener("keydown", function(event) {
     }
 });
 
-
 buttons.forEach(button => {
     button.addEventListener("click", function() {
         const buttonText = button.innerHTML;
@@ -147,9 +146,7 @@ const resetAll = () => {
 };
 
 const replaceInitialZero = () => {
-    if (screenB.innerHTML === "0") {
-        screenB.innerHTML = "";
-    };
+    if (screenB.innerHTML === "0") screenB.innerHTML = "";
 };
 
 const deleteLastEntry = () => {
@@ -159,10 +156,8 @@ const deleteLastEntry = () => {
 };
 
 const deleteScreenAEntry = () => {
-    if (screenB.innerHTML === "0") {
-        screenB.innerHTML = screenA.innerHTML;
-        resetScreenA();
-    };
+    if (screenB.innerHTML === "0") screenB.innerHTML = screenA.innerHTML;
+    resetScreenA();
 };
 
 const toggleNegPos = () => {
