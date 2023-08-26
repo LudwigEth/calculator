@@ -49,15 +49,20 @@ buttons.forEach(button => {
             case "×":
             case "-":
             case "+":
-            case ".":
                 if (nonStackOperator()) {
-                    return;
+                    updateScreenA();
+                    resetScreenB();
                 } else {
                     screenB.innerHTML += buttonText;
                 };
                 break;
             default:
                 replaceInitialZero();
+                if (nonStackOperator()) {
+                    updateScreenA();
+                    resetScreenB();
+                    replaceInitialZero();
+                };
                 screenB.innerHTML += buttonText;
                 break;
         };
@@ -95,8 +100,11 @@ const nonStackOperator = () => {
     if (screenB.innerHTML.endsWith("+") ||
         screenB.innerHTML.endsWith("-") ||
         screenB.innerHTML.endsWith("×") ||
-        screenB.innerHTML.endsWith(".") ||
         screenB.innerHTML.endsWith("÷")) {
             return true;
+        } else {
+            return false;
         }
 };
+
+const updateScreenA = () => screenA.innerHTML = screenB.innerHTML;
