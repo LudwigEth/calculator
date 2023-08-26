@@ -54,8 +54,8 @@ buttons.forEach(button => {
             case "-":
             case "+":
                 if (nonStackOperator()) {
-                    updateScreenA();
-                    resetScreenB();
+                    if (screenB.innerHTML.endsWith(buttonText)) return;
+                    screenB.innerHTML = screenB.innerHTML.slice(0, -1) + buttonText;
                 } else {
                     getNums();
                     getOperator();
