@@ -1,9 +1,9 @@
 const buttons = document.querySelectorAll("button");
 const screenA = document.getElementById("top-screen");
 const screenB = document.getElementById("bottom-screen");
-let numA;
-let numB;
-let operator;
+let numA = "";
+let numB = "";
+let operator = "";
 
 
 const add = (a, b) => a + b;
