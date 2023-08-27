@@ -44,7 +44,9 @@ buttons.forEach(button => {
             case "×":
             case "-":
             case "+":
-                if (nonStackOperator()) {
+                if (checkError()) {
+                    resetScreenB();
+                } else if (nonStackOperator()) {
                     if (screenB.innerHTML.endsWith(buttonText)) return;
                     screenB.innerHTML = screenB.innerHTML.slice(0, -1) + buttonText;
                 } else {
@@ -56,6 +58,7 @@ buttons.forEach(button => {
                         screenB.innerHTML = sum;
                     };
                     screenB.innerHTML += buttonText;
+                    throwSizeError();
                 };
                 break;
             case ".":
@@ -73,16 +76,24 @@ buttons.forEach(button => {
                     sum = operate(numA, numB, operator);
                     resetAll();
                     screenB.innerHTML = sum;
+                    throwSizeError();
                 };
                 break;
             default:
-                replaceInitialZero();
+                if (checkError()) {
+                    resetScreenB();
+                    return;
+                };
                 if (nonStackOperator()) {
                     updateScreenA();
                     resetScreenB();
                     replaceInitialZero();
+                    screenB.innerHTML += buttonText;
+                } else {
+                    replaceInitialZero();
+                    screenB.innerHTML += buttonText;
+                    throwSizeError();
                 };
-                screenB.innerHTML += buttonText;
                 break;
         };
     });
@@ -184,3 +195,15 @@ const deleteUnusedOperator = () => {
         if (nonStackOperator() || decimalLogic()) deleteLastEntry();
     };
 };
+
+const sizeErrorMessage = "Num Too Big!";
+
+const throwSizeError = () => {
+    if (screenB.innerHTML.length > 12) {
+        screenB.innerHTML = sizeErrorMessage;
+    };
+};
+
+const checkError = () => screenB.innerHTML === sizeErrorMessage;
+
+
