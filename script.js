@@ -75,7 +75,7 @@ buttons.forEach(button => {
                 if (operateChecklist()) {
                     sum = operate(numA, numB, operator);
                     resetAll();
-                    screenB.innerHTML = sum;
+                    screenB.innerHTML = sum.toFixed(3);
                     throwSizeError();
                 };
                 break;
