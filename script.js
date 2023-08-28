@@ -34,8 +34,7 @@ buttons.forEach(button => {
                 resetAll();
                 break;
             case "del":
-                deleteScreenAEntry();
-                deleteLastEntry();
+                deleteLatestInput();
                 break;
             case "±":
                 toggleNegPos();
@@ -209,3 +208,12 @@ const throwSizeError = () => {
 };
 
 const checkSizeError = () => screenB.innerHTML === sizeErrorMessage;
+
+
+
+// Switch Case functions
+
+const deleteLatestInput = () => {
+    deleteScreenAEntry();
+    deleteLastEntry();
+};
