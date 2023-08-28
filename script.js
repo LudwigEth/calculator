@@ -62,7 +62,7 @@ buttons.forEach(button => {
                 };
                 break;
             case ".":
-                if (decimalLogic() || containsDecimalpoint()) {
+                if (endsWithDot() || containsDecimalpoint()) {
                     return;
                 } else {
                     screenB.innerHTML += buttonText;
@@ -192,13 +192,13 @@ const nonStackOperator = () => {
             screenB.innerHTML.endsWith("÷");
 };
 
-const decimalLogic = () => screenB.innerHTML.endsWith(".");
+const endsWithDot = () => screenB.innerHTML.endsWith(".");
 const containsDecimalpoint = () => screenB.innerHTML.includes(".");
 const updateScreenA = () => screenA.innerHTML = screenB.innerHTML;
 
 const deleteUnusedOperator = () => {
     if (screenA.innerHTML === "") {
-        if (nonStackOperator() || decimalLogic()) deleteLastEntry();
+        if (nonStackOperator() || endsWithDot()) deleteLastEntry();
     };
 };
 
