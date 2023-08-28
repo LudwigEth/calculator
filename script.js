@@ -43,16 +43,16 @@ buttons.forEach(button => {
             case "×":
             case "-":
             case "+":
-                handleOperators();
+                handleOperators(buttonText);
                 break;
             case ".":
-                handleDecimals();
+                handleDecimals(buttonText);
                 break;
             case "=":
                 handleEquals();
                 break;
             default:
-                handleNumbers();
+                handleNumbers(buttonText);
                 break;
         };
     });
@@ -87,16 +87,12 @@ const operate = (numA, numB, operator) => {
     switch (operator) {
         case "+":
             return add(numA, numB);
-            break;
         case "-":
             return substract(numA, numB);
-            break;
         case "×":
             return multiply(numA, numB);
-            break;
         case "÷":
             return divide(numA, numB);
-            break;
     };
 };
 
@@ -131,6 +127,7 @@ const deleteScreenAEntry = () => {
 };
 
 const toggleNegPos = () => {
+    deleteError();
     const mathOperators = ["-", "+", "÷", "×"];
     if (mathOperators.some(mop => screenB.innerHTML === "0" + mop)) return;
     if (screenB.innerHTML === "0" || screenB.innerHTML === "-") return;
@@ -157,7 +154,11 @@ const deleteUnusedOperator = () => {
     };
 };
 
+// Error Handling
+
+const errorMessage = "ERROR";
 const sizeErrorMessage = "Num Too Big!";
+const divideByZeroErrorMessage = "Can't ÷ by 0";
 const maxStringLength = "12";
 
 const throwSizeError = () => {
@@ -166,18 +167,35 @@ const throwSizeError = () => {
     };
 };
 
+const divideByZeroError = () => {
+    screenA.innerHTML = errorMessage;
+    screenB.innerHTML = divideByZeroErrorMessage;
+};
+
+const deleteError = () => {
+    if (screenA.innerHTML === errorMessage) {
+        resetAll();
+        return;
+    };
+};
+
 const checkSizeError = () => screenB.innerHTML === sizeErrorMessage;
-
-
+const checkDivideByZero = () => screenA.innerHTML.includes("÷") && (screenB.innerHTML === "0" ||
+                                                                    screenB.innerHTML === "0.");
 
 // Switch Case functions
 
 const deleteLatestInput = () => {
+    if (screenA.innerHTML === errorMessage) {
+        resetAll();
+        return;
+    };
     deleteScreenAEntry();
     deleteLastEntry();
 };
 
-const handleOperators = () => {
+const handleOperators = (buttonText) => {
+    deleteError();
     if (checkSizeError()) {
         resetScreenB();
     } else if (nonStackOperator()) {
@@ -196,28 +214,34 @@ const handleOperators = () => {
     };
 };
 
-const handleDecimals = () => {
+const handleDecimals = (buttonText) => {
+    deleteError();
     if (endsWithDot() || containsDecimalpoint()) return;
-                screenB.innerHTML += buttonText;
+    screenB.innerHTML += buttonText;
 };
 
 const handleEquals = () => {
+    if (checkDivideByZero()) {
+        divideByZeroError();
+        return;
+    };
     deleteUnusedOperator();
-                getNums();
-                getOperator();
-                if (operateChecklist()) {
-                    sum = operate(numA, numB, operator);
-                    resetAll();
-                    if (sum.toString().includes(".")) {
-                        screenB.innerHTML = parseFloat(sum.toFixed(3));
-                    } else {
-                        screenB.innerHTML = sum;
-                    };
-                    throwSizeError();
-                };
+    getNums();
+    getOperator();
+    if (operateChecklist()) {
+        sum = operate(numA, numB, operator);
+        resetAll();
+        if (sum.toString().includes(".")) {
+        screenB.innerHTML = parseFloat(sum.toFixed(3));
+        } else {
+            screenB.innerHTML = sum;
+        };
+        throwSizeError();
+    };
 };
 
-const handleNumbers = () => {
+const handleNumbers = (buttonText) => {
+    deleteError();
     if (checkSizeError()) {
         resetScreenB();
         return;
