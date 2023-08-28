@@ -62,11 +62,8 @@ buttons.forEach(button => {
                 };
                 break;
             case ".":
-                if (endsWithDot() || containsDecimalpoint()) {
-                    return;
-                } else {
-                    screenB.innerHTML += buttonText;
-                };
+                if (endsWithDot() || containsDecimalpoint()) return;
+                screenB.innerHTML += buttonText;
                 break;
             case "=":
                 deleteUnusedOperator();
