@@ -203,13 +203,12 @@ const deleteUnusedOperator = () => {
 };
 
 const sizeErrorMessage = "Num Too Big!";
+const maxStringLength = "12";
 
 const throwSizeError = () => {
-    if (screenB.innerHTML.length > 12) {
+    if (screenB.innerHTML.length > maxStringLength) {
         screenB.innerHTML = sizeErrorMessage;
     };
 };
 
 const checkSizeError = () => screenB.innerHTML === sizeErrorMessage;
-
-
