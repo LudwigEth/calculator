@@ -176,6 +176,8 @@ const deleteScreenAEntry = () => {
 };
 
 const toggleNegPos = () => {
+    const mathOperators = ["-", "+", "÷", "×"];
+    if (mathOperators.some(mop => screenB.innerHTML === "0" + mop)) return;
     if (screenB.innerHTML === "0" || screenB.innerHTML === "-") return;
     
     screenB.innerHTML = screenB.innerHTML.startsWith("-")
