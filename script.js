@@ -23,7 +23,7 @@ window.addEventListener("keydown", function(event) {
         calculatorButton.click();
     } else if (keyMappings[pressedKey]) {
         document.getElementById("key-" + keyMappings[pressedKey]).click();
-    }
+    };
 });
 
 buttons.forEach(button => {
