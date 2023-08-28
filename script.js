@@ -52,20 +52,7 @@ buttons.forEach(button => {
                 handleEquals();
                 break;
             default:
-                if (checkSizeError()) {
-                    resetScreenB();
-                    return;
-                };
-                if (nonStackOperator()) {
-                    updateScreenA();
-                    resetScreenB();
-                    replaceInitialZero();
-                    screenB.innerHTML += buttonText;
-                } else {
-                    replaceInitialZero();
-                    screenB.innerHTML += buttonText;
-                    throwSizeError();
-                };
+                handleNumbers();
                 break;
         };
     });
@@ -228,4 +215,21 @@ const handleEquals = () => {
                     };
                     throwSizeError();
                 };
+};
+
+const handleNumbers = () => {
+    if (checkSizeError()) {
+        resetScreenB();
+        return;
+    };
+    if (nonStackOperator()) {
+        updateScreenA();
+        resetScreenB();
+        replaceInitialZero();
+        screenB.innerHTML += buttonText;
+    } else {
+        replaceInitialZero();
+        screenB.innerHTML += buttonText;
+        throwSizeError();
+    };
 };
