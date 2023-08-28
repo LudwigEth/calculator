@@ -49,19 +49,7 @@ buttons.forEach(button => {
                 handleDecimals();
                 break;
             case "=":
-                deleteUnusedOperator();
-                getNums();
-                getOperator();
-                if (operateChecklist()) {
-                    sum = operate(numA, numB, operator);
-                    resetAll();
-                    if (sum.toString().includes(".")) {
-                        screenB.innerHTML = parseFloat(sum.toFixed(3));
-                    } else {
-                        screenB.innerHTML = sum;
-                    };
-                    throwSizeError();
-                };
+                handleEquals();
                 break;
             default:
                 if (checkSizeError()) {
@@ -224,4 +212,20 @@ const handleOperators = () => {
 const handleDecimals = () => {
     if (endsWithDot() || containsDecimalpoint()) return;
                 screenB.innerHTML += buttonText;
+};
+
+const handleEquals = () => {
+    deleteUnusedOperator();
+                getNums();
+                getOperator();
+                if (operateChecklist()) {
+                    sum = operate(numA, numB, operator);
+                    resetAll();
+                    if (sum.toString().includes(".")) {
+                        screenB.innerHTML = parseFloat(sum.toFixed(3));
+                    } else {
+                        screenB.innerHTML = sum;
+                    };
+                    throwSizeError();
+                };
 };
