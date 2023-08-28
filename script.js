@@ -46,8 +46,7 @@ buttons.forEach(button => {
                 handleOperators();
                 break;
             case ".":
-                if (endsWithDot() || containsDecimalpoint()) return;
-                screenB.innerHTML += buttonText;
+                handleDecimals();
                 break;
             case "=":
                 deleteUnusedOperator();
@@ -220,4 +219,9 @@ const handleOperators = () => {
         screenB.innerHTML += buttonText;
         throwSizeError();
     };
+};
+
+const handleDecimals = () => {
+    if (endsWithDot() || containsDecimalpoint()) return;
+                screenB.innerHTML += buttonText;
 };
