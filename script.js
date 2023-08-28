@@ -44,7 +44,7 @@ buttons.forEach(button => {
             case "×":
             case "-":
             case "+":
-                if (checkError()) {
+                if (checkSizeError()) {
                     resetScreenB();
                 } else if (nonStackOperator()) {
                     if (screenB.innerHTML.endsWith(buttonText)) return;
@@ -84,7 +84,7 @@ buttons.forEach(button => {
                 };
                 break;
             default:
-                if (checkError()) {
+                if (checkSizeError()) {
                     resetScreenB();
                     return;
                 };
@@ -210,6 +210,6 @@ const throwSizeError = () => {
     };
 };
 
-const checkError = () => screenB.innerHTML === sizeErrorMessage;
+const checkSizeError = () => screenB.innerHTML === sizeErrorMessage;
 
 
