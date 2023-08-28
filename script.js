@@ -43,22 +43,7 @@ buttons.forEach(button => {
             case "×":
             case "-":
             case "+":
-                if (checkSizeError()) {
-                    resetScreenB();
-                } else if (nonStackOperator()) {
-                    if (screenB.innerHTML.endsWith(buttonText)) return;
-                    screenB.innerHTML = screenB.innerHTML.slice(0, -1) + buttonText;
-                } else {
-                    getNums();
-                    getOperator();
-                    if (operateChecklist()) {
-                        sum = operate(numA, numB, operator);
-                        resetAll();
-                        screenB.innerHTML = sum;
-                    };
-                    screenB.innerHTML += buttonText;
-                    throwSizeError();
-                };
+                handleOperators();
                 break;
             case ".":
                 if (endsWithDot() || containsDecimalpoint()) return;
@@ -216,4 +201,23 @@ const checkSizeError = () => screenB.innerHTML === sizeErrorMessage;
 const deleteLatestInput = () => {
     deleteScreenAEntry();
     deleteLastEntry();
+};
+
+const handleOperators = () => {
+    if (checkSizeError()) {
+        resetScreenB();
+    } else if (nonStackOperator()) {
+        if (screenB.innerHTML.endsWith(buttonText)) return;
+        screenB.innerHTML = screenB.innerHTML.slice(0, -1) + buttonText;
+    } else {
+        getNums();
+        getOperator();
+        if (operateChecklist()) {
+            sum = operate(numA, numB, operator);
+            resetAll();
+            screenB.innerHTML = sum;
+        };
+        screenB.innerHTML += buttonText;
+        throwSizeError();
+    };
 };
