@@ -195,6 +195,10 @@ const deleteLatestInput = () => {
 };
 
 const handleOperators = (buttonText) => {
+    if (checkDivideByZero()) {
+        divideByZeroError();
+        return;
+    };
     deleteError();
     if (checkSizeError()) {
         resetScreenB();
