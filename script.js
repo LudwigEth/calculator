@@ -154,6 +154,8 @@ const deleteUnusedOperator = () => {
     };
 };
 
+const smallDecimalFractions = () => sum.toString().startsWith("0.");
+
 // Error Handling
 
 const errorMessage = "ERROR";
@@ -236,7 +238,11 @@ const handleEquals = () => {
         sum = operate(numA, numB, operator);
         resetAll();
         if (sum.toString().includes(".")) {
-        screenB.innerHTML = parseFloat(sum.toFixed(3));
+            if (smallDecimalFractions()) {
+                screenB.innerHTML = parseFloat(sum.toFixed(8));
+                return;
+            };
+            screenB.innerHTML = parseFloat(sum.toFixed(4));
         } else {
             screenB.innerHTML = sum;
         };
