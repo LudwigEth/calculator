@@ -7,6 +7,7 @@ let numB = "";
 let operator = "";
 let sum = "";
 
+const mathOperators = ["-", "+", "÷", "×"];
 
 window.addEventListener("keydown", function(event) {
     const keyMappings = {
@@ -121,14 +122,13 @@ const deleteLastEntry = () => {
     if (!screenB.innerHTML) screenB.innerHTML = "0";
 };
 
-const deleteScreenAEntry = () => {
-    if (screenB.innerHTML === "0") screenB.innerHTML = screenA.innerHTML;
+const screenAtoScreenB = () => {
+    screenB.innerHTML = screenA.innerHTML;
     resetScreenA();
 };
 
 const toggleNegPos = () => {
     deleteError();
-    const mathOperators = ["-", "+", "÷", "×"];
     if (mathOperators.some(mop => screenB.innerHTML === "0" + mop)) return;
     if (screenB.innerHTML === "0" || screenB.innerHTML === "-") return;
     
@@ -156,7 +156,12 @@ const deleteUnusedOperator = () => {
 
 const smallDecimalFractions = () => sum.toString().startsWith("0.");
 
-const secondNumStartWithDecimal = () => screenB.innerHTML.endsWith("+" || "-" || "÷" || "×");
+const screenBEndsWithOperator = () => {
+    return mathOperators.some(mop => screenB.innerHTML.endsWith(mop));
+};
+
+const screenAIsEmpty = () => screenA.innerHTML === "";
+const screenBisZero = () => screenB.innerHTML === "0";
 
 // Error Handling
 
@@ -194,8 +199,10 @@ const deleteLatestInput = () => {
         resetAll();
         return;
     };
-    deleteScreenAEntry();
-    deleteLastEntry();
+    if (screenBisZero() && !screenAIsEmpty()) {
+        screenAtoScreenB();
+    };
+    deleteLastEntry()
 };
 
 const handleOperators = (buttonText) => {
@@ -224,12 +231,13 @@ const handleOperators = (buttonText) => {
 
 const handleDecimals = (buttonText) => {
     deleteError();
-    if (endsWithDot() || containsDecimalpoint()) return;
-    if (secondNumStartWithDecimal) {
+    if (endsWithDot()) return;
+    if (screenBEndsWithOperator()) {
         updateScreenA();
         screenB.innerHTML = "0" + buttonText;
         return;
     };
+    if (containsDecimalpoint()) return;
     screenB.innerHTML += buttonText;
 };
 
