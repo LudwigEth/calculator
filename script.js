@@ -156,6 +156,8 @@ const deleteUnusedOperator = () => {
 
 const smallDecimalFractions = () => sum.toString().startsWith("0.");
 
+const secondNumStartWithDecimal = () => screenB.innerHTML.endsWith("+" || "-" || "÷" || "×");
+
 // Error Handling
 
 const errorMessage = "ERROR";
@@ -223,6 +225,11 @@ const handleOperators = (buttonText) => {
 const handleDecimals = (buttonText) => {
     deleteError();
     if (endsWithDot() || containsDecimalpoint()) return;
+    if (secondNumStartWithDecimal) {
+        updateScreenA();
+        screenB.innerHTML = "0" + buttonText;
+        return;
+    };
     screenB.innerHTML += buttonText;
 };
 
