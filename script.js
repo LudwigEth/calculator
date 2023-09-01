@@ -162,6 +162,7 @@ const screenBEndsWithOperator = () => {
 
 const screenAIsEmpty = () => screenA.innerHTML === "";
 const screenBisZero = () => screenB.innerHTML === "0";
+const screenBisMinusZero = () => screenB.innerHTML === "-0";
 
 // Error Handling
 
@@ -203,6 +204,7 @@ const deleteLatestInput = () => {
         screenAtoScreenB();
     };
     deleteLastEntry()
+    if (screenBisMinusZero()) resetScreenB();
 };
 
 const handleOperators = (buttonText) => {
