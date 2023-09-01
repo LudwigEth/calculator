@@ -183,7 +183,8 @@ const divideByZeroError = () => {
 };
 
 const deleteError = () => {
-    if (screenA.innerHTML === errorMessage) {
+    if (screenA.innerHTML === errorMessage ||
+        screenB.innerHTML === sizeErrorMessage) {
         resetAll();
         return;
     };
@@ -196,10 +197,7 @@ const checkDivideByZero = () => screenA.innerHTML.includes("÷") && (screenB.inn
 // Switch Case functions
 
 const deleteLatestInput = () => {
-    if (screenA.innerHTML === errorMessage) {
-        resetAll();
-        return;
-    };
+    deleteError();
     if (screenBisZero() && !screenAIsEmpty()) {
         screenAtoScreenB();
     };
